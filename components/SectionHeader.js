@@ -35,9 +35,7 @@ export default class SectionHeader extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:'#f8f8f8',
-    borderTopWidth: 1,
-    borderTopColor: '#ececec'
+    backgroundColor:'#f8f8f8'
   },
   text: {
     fontWeight: '700',
