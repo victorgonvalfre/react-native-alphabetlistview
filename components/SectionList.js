@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     alignItems:'flex-end',
     justifyContent:'center',
-    right: 5,
+    right: 0,
     top: 0,
     bottom: 0
   },
