@@ -258,7 +258,8 @@ export default class SelectableSectionsListView extends Component {
     return (
       <View ref="view" style={[styles.container, this.props.style]}>
         <ListView
-          initialListSize={10000}
+          initialListSize={10}
+          pageSize={500}
           ref="listview"
           {...props}
         />
