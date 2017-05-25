@@ -12,7 +12,7 @@ import ReactNative, {
   NativeModules,
 } from 'react-native';
 import merge from 'merge';
-
+import SGListView from 'react-native-sglistview';
 import SectionHeader from './SectionHeader';
 import SectionList from './SectionList';
 import CellWrapper from './CellWrapper';
@@ -120,11 +120,11 @@ export default class SelectableSectionsListView extends Component {
       const maxY = this.totalHeight - this.containerHeight + headerHeight;
       y = y > maxY ? maxY : y;
 
-      this.refs.listview.scrollTo({ x:0, y, animated: true });
+      this.refs.listview.getScrollResponder().scrollTo({ x:0, y, animated: true });
     } else {
       UIManager.measureLayout(this.cellTagMap[section], ReactNative.findNodeHandle(this.refs.listview), () => {}, (x, y, w, h) => {
         y = y - this.props.sectionHeaderHeight;
-        this.refs.listview.scrollTo({ x:0, y, animated: true });
+        this.refs.listview.getScrollResponder().scrollTo({ x:0, y, animated: true });
       });
     }
 
@@ -257,10 +257,13 @@ export default class SelectableSectionsListView extends Component {
 
     return (
       <View ref="view" style={[styles.container, this.props.style]}>
-        <ListView
-          initialListSize={10}
-          pageSize={500}
-          ref="listview"
+        <SGListView
+            initialListSize={30}
+            stickyHeaderIndices={[]}
+            onEndReachedThreshold={1}
+            scrollRenderAheadDistance={1}
+            pageSize={100}
+            ref={'listview'}
           {...props}
         />
         {sectionList}
